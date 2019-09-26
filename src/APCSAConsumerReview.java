@@ -10,7 +10,7 @@ public class APCSAConsumerReview {
 		System.out.println("Total Sentiment: " +total);
 		
 		double review = Review.starRating("src/SimpleReview.txt");
-		System.out.println("Review:" + stars);
+		System.out.println("Review:" + review);
 	}
 
 }
