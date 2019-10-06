@@ -37,7 +37,7 @@ public class Review {
       Scanner input = new Scanner(new File("src/positiveAdjectives.txt"));
       while(input.hasNextLine()){
         String temp = input.nextLine().trim();
-        System.out.println(temp);
+        //System.out.println(temp);
         posAdjectives.add(temp);
       }
       input.close();
@@ -210,5 +210,41 @@ if (rating > 4) {
     // return number of stars
     return stars; 
   }
+  
+ public static String fakeReview(String filename) {
+	 String review = "src/positiveAdjectives.txt";
+	 //read in our file into a string (Simple Review.txt)
+	 review= textToString(filename);
+	 
+	 //break at spaces so we have a list of words
+	 String [] words = review.split(" ");
+	 
+	 for (int i = 0; i < words.length; i++) {
+		 //if words are positive, import from the negative review, vice versa
+		 //if word starts with asterix, replace with randomly generated adj
+		 if (words[i].charAt(0)== '*') {
+			 int length = words [i].length();
+			 if (words[i].charAt(length-1) == ',') {
+				 //if (sentimentVal > 1) {
+					 //words [i] = randomNegativeAdj;
+				 }
+				 words [i] = randomAdjective() + ",";
+			 }else {
+				 words [i] = randomAdjective();
+			
+			 }
+	
+		 }
+	 }
+	 
+	 
+	 //reassemble into "review" - one continuous string
+	 //make sure it has spaces!
+	 review = "";
+	 for (int i = 0; i < words.length; i++) {
+		 review += words[i] + " ";
+	 }
+	 return review;
+ }
   
 }
