@@ -121,6 +121,7 @@ public class Review {
   public static String randomPositiveAdj()
   {
     int index = (int)(Math.random() * posAdjectives.size());
+    System.out.println(posAdjectives.get(index));
     return posAdjectives.get(index);
   }
   
@@ -130,6 +131,7 @@ public class Review {
   public static String randomNegativeAdj()
   {
     int index = (int)(Math.random() * negAdjectives.size());
+    
     return negAdjectives.get(index);
     
   }
@@ -225,26 +227,39 @@ if (rating > 4) {
 		 if (words[i].charAt(0)== '*') {
 			 int length = words [i].length();
 			 if (words[i].charAt(length-1) == ',') {
-				 //if (sentimentVal > 1) {
-					 //words [i] = randomNegativeAdj;
+				 double value =sentimentVal(words[i].substring(1, length - 1)); 
+				 System.out.println(words[i].substring(1, length - 1));
+				 System.out.println(value);
+				 	if (value< 0) {
+				 		words[i] = randomNegativeAdj();
+				 		System.out.println(words[i]);
+				 }	else {
+					 words[i] = randomPositiveAdj();
+					 System.out.println(words[i]);
 				 }
-				 words [i] = randomAdjective() + ",";
-			 }else {
-				 words [i] = randomAdjective();
+				// words [i] = randomAdjective() + ",";
+			 }
+			 //else {
+				// words [i] = randomAdjective();
 			
 			 }
 	
+		}
+	 	review = "";
+		 for (int i = 0; i < words.length; i++) {
+			 review += words[i] + " ";
 		 }
+	 	return review;
 	 }
 	 
 	 
 	 //reassemble into "review" - one continuous string
 	 //make sure it has spaces!
-	 review = "";
+	 /*review = "";
 	 for (int i = 0; i < words.length; i++) {
 		 review += words[i] + " ";
 	 }
-	 return review;
- }
+	 return review;*/
+ 
   
 }

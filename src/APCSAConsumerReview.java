@@ -11,6 +11,12 @@ public class APCSAConsumerReview {
 		
 		double review = Review.starRating("src/SimpleReview.txt");
 		System.out.println("Review:" + review);
+		
+		
+		String fake = Review.fakeReview("src/SimpleReview.txt");
+		System.out.println(fake);
 	}
 
 }
+
+
